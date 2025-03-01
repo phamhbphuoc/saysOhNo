@@ -1,22 +1,33 @@
-const audio = new Audio('ohNo.mp3');
-
 window.onload = function() {
     const audioElement = document.getElementById('sound');
-    audioElement.play().catch(error => {
-        console.error('Autoplay failed:', error);
-        // Retry playing the audio after a user interaction
-        document.body.addEventListener('click', () => {
-            audioElement.play().catch(err => {
-                console.error('Error playing audio after user interaction:', err);
-            });
-        }, { once: true });
-    });
 
-    const replayButton = document.getElementById('replayButton');
-    replayButton.addEventListener('click', () => {
+    // Play audio and create ripple effect when clicking anywhere on the screen
+    document.body.addEventListener('click', (event) => {
         audioElement.currentTime = 0; // Reset audio to the beginning
         audioElement.play().catch(error => {
             console.error('Error playing audio:', error);
+        });
+
+        // Create ripple effect
+        const ripple = document.createElement('div');
+        ripple.className = 'trail';
+        ripple.style.left = `${event.clientX - 10}px`;
+        ripple.style.top = `${event.clientY - 10}px`;
+        document.body.appendChild(ripple);
+        ripple.addEventListener('animationend', () => {
+            ripple.remove();
+        });
+    });
+
+    // Create trailing effect on mouse move
+    document.body.addEventListener('mousemove', (event) => {
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        trail.style.left = `${event.clientX - 10}px`;
+        trail.style.top = `${event.clientY - 10}px`;
+        document.body.appendChild(trail);
+        trail.addEventListener('animationend', () => {
+            trail.remove();
         });
     });
 };
