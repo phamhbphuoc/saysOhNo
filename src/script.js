@@ -1,4 +1,4 @@
-const audio = new Audio('../assets/ogg/CartoonVocal_4003_24_4.ogg');
+const audio = new Audio('../assets/mp3/ohNo.mp3');
 
 window.onload = function() {
     const audioElement = document.getElementById('sound');
