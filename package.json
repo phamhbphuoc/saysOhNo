@@ -1,0 +1,16 @@
+{
+  "name": "saysohno",
+  "version": "1.0.0",
+  "description": "This is a simple web that plays a sound.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

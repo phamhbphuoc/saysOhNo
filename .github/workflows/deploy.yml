@@ -1,0 +1,33 @@
+name: Build & Deploy
+run-name: Deploying ${{ github.repository }}
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+  deployments: write
+  pages: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Configure Git
+        run: |
+          git config --global user.email "github-actions-bot@example.com"
+          git config --global user.name "github-actions-bot"
+      - name: Build and Deploy
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npx gh-pages -d src
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

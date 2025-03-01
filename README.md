@@ -17,11 +17,12 @@ To run the web application, follow these steps:
    cd saysOhNo
    ```
 
-3. Open the `src/index.html` file in your web browser.
+3. Install dependencies:
+   ```
+   npm i
+   ```
 
-## Dependencies
-
-No external dependencies are required for this project. It uses standard HTML, CSS, and JavaScript.
+4. Open the `src/index.html` file in your web browser.
 
 ## License
 

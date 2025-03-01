@@ -1,4 +1,4 @@
-const audio = new Audio('../assets/mp3/ohNo.mp3');
+const audio = new Audio('ohNo.mp3');
 
 window.onload = function() {
     const audioElement = document.getElementById('sound');
